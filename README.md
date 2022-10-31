@@ -1,4 +1,4 @@
-# vuestorefront-challenge
+# forecast-app
 
 ## Project setup
 ```
