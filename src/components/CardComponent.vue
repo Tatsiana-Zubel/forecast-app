@@ -1,22 +1,20 @@
 <template>
   <div class="card">
     <span>{{ title }}</span>
-    <p>
-      Hey,<br>
-      this is card paragraph
-    </p>
+    <ForecastComponent/>
   </div>
 </template>
 
 <script>
 import './CardComponent.scss'
+import ForecastComponent from "@/components/ForecastComponent";
 export default {
   name: 'CardComponent',
+  components: {
+    ForecastComponent
+  },
   props: {
     title: String
   }
 }
 </script>
-
-<style>
-</style>

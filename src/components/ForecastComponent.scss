@@ -1,0 +1,15 @@
+.container {
+  margin-bottom: 25px;
+
+  span {
+    display: block;
+  }
+
+  &.flex {
+    display: flex;
+
+    .wrapper:first-child {
+      margin-right: 15px;
+    }
+  }
+}
