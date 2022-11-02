@@ -6,11 +6,10 @@
 </template>
 
 <script>
-import './CardComponent.scss'
-import ForecastComponent from "@/components/ForecastComponent";
+import ForecastComponent from "@/components/ForecastComponent"
+
 export default {
-  // eslint-disable-next-line vue/multi-word-component-names
-  name: 'Card',
+  name: 'CardComponent',
   components: {
     ForecastComponent
   },
@@ -19,3 +18,16 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.card {
+  border-style: solid dashed solid;
+  padding: 10px;
+  width: 160px;
+
+  * {
+    text-transform: uppercase;
+    cursor: default;
+  }
+}
+</style>

@@ -24,15 +24,15 @@
         <span>{{ sunset }}</span>
       </div>
     </div>
-    <ToggleComponent @switch="switchValue"/>
+    <ToggleComponent @toggle="toggleValue"/>
   </div>
 </template>
 
 <script>
-import LoadingSpinner from "@/components/Spinner/LoadingSpinner";
-import './ForecastComponent.scss'
+import LoadingSpinner from "@/components/Spinner/LoadingSpinner"
+import ToggleComponent from "@/components/Toggler/ToggleComponent"
+import { ToggleValues } from '../enums/enums'
 import axios from 'axios'
-import ToggleComponent from "@/components/Toggler/ToggleComponent";
 
 export default {
   name: "ForecastComponent",
@@ -43,7 +43,6 @@ export default {
   data() {
     return {
       temperature: null,
-      temperatureInFahrenheit: null,
       displayFahrenheit: false,
       weatherDescription: null,
       city: null,
@@ -54,20 +53,23 @@ export default {
       sunset: null,
       positionLatitude: null,
       positionLongitude: null,
-      loading: false,
-      apiKey: 'a8309208f1b602f825e91ac2c91e131b'
+      loading: false
     }
   },
   computed: {
     locationApiCallLink() {
-      return `http://api.openweathermap.org/geo/1.0/reverse?lat=${this.positionLatitude}&lon=${this.positionLongitude}&appid=${this.apiKey}`
+      return `http://api.openweathermap.org/geo/1.0/reverse?lat=${this.positionLatitude}&lon=${this.positionLongitude}&appid=${process.env.VUE_APP_API_KEY}`
     },
     weatherApiCallLink() {
-      return `https://api.openweathermap.org/data/2.5/weather?lat=${this.positionLatitude}&lon=${this.positionLongitude}&appid=${this.apiKey}`
+      return `https://api.openweathermap.org/data/2.5/weather?lat=${this.positionLatitude}&lon=${this.positionLongitude}&appid=${process.env.VUE_APP_API_KEY}`
+    },
+    temperatureInFahrenheit() {
+      return (this.temperature * 9 / 5) + 32
     }
   },
   beforeMount() {
     this.getCoordinates()
+    console.log(process.env.VUE_APP_API_KEY, 'process.env')
   },
   methods: {
     getCoordinates() {
@@ -97,7 +99,8 @@ export default {
     },
     async getWeather() {
       this.loading = true
-      let kelvinUnit = -272.15
+      const kelvinUnit = -272.15
+
       await axios.get(this.weatherApiCallLink)
         .then(res => {
           const data = res.data
@@ -114,25 +117,40 @@ export default {
           let sunriseHours = sunriseDate.getHours()
           sunriseHours = ("0" + sunriseHours).slice(-2);
           const sunriseMinutes = `0${sunriseDate.getMinutes()}`
-          this.sunrise =`${sunriseHours}:${sunriseMinutes.slice(-2)}`
+          this.sunrise = `${sunriseHours}:${sunriseMinutes.slice(-2)}`
 
           const sunsetUnixTimestamp = data.sys.sunset
           const sunsetDate = new Date(sunsetUnixTimestamp * 1000)
           const sunsetHours = sunsetDate.getHours()
           const sunsetMinutes = `0${sunsetDate.getMinutes()}`
-          this.sunset =`${sunsetHours}:${sunsetMinutes.slice(-2)}`
+          this.sunset = `${sunsetHours}:${sunsetMinutes.slice(-2)}`
 
           this.loading = false
         })
     },
-    switchValue(param) {
-      if (param === 'fahrenheit') {
-        this.displayFahrenheit = true
-        this.temperatureInFahrenheit = (this.temperature * 9/5) + 32
-      } else {
-        this.displayFahrenheit = false
-      }
+    toggleValue(param) {
+      this.displayFahrenheit = param === ToggleValues.Fahrenheit
     }
   }
 }
 </script>
+
+<style lang="scss">
+.container {
+  span {
+    display: block;
+    line-height: 1.5;
+  }
+
+  .wrapper:first-child {
+    margin-right: 15px;
+  }
+  .divider {
+    margin: 0 10px;
+  }
+}
+
+.flex {
+  display: flex;
+}
+</style>

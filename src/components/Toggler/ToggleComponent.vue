@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import './ToggleComponent.scss'
-import { ToggleValues } from '../contstants/constants'
+import { ToggleValues } from '../../enums/enums'
+
 export default {
   name: "ToggleComponent",
   data() {
@@ -16,17 +16,33 @@ export default {
       toggleValue: null
     }
   },
-
   methods: {
     switchToCelsius() {
-      this.toggleValue = ToggleValues.celsius;
-      this.$emit('switch', this.toggleValue)
+      this.toggleValue = ToggleValues.Celsius;
+      this.$emit('toggle', this.toggleValue)
     },
     switchToFahrenheit() {
-      this.toggleValue = ToggleValues.fahrenheit
-      this.$emit('switch', this.toggleValue)
+      this.toggleValue = ToggleValues.Fahrenheit
+      this.$emit('toggle', this.toggleValue)
     }
   }
 }
-
 </script>
+
+<style lang="scss">
+.toggle {
+  display:flex;
+  justify-content: center;
+  margin: 5px 0;
+
+  button {
+    width: 50%;
+  }
+  button:hover{
+    cursor: pointer;
+  }
+  span {
+    margin: 0 10px;
+  }
+}
+</style>
