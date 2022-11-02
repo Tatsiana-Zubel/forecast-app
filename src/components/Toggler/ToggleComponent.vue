@@ -8,14 +8,23 @@
 
 <script>
 import './ToggleComponent.scss'
+import { ToggleValues } from '../contstants/constants'
 export default {
   name: "ToggleComponent",
+  data() {
+    return {
+      toggleValue: null
+    }
+  },
+
   methods: {
     switchToCelsius() {
-      console.log('switchToCelsius')
+      this.toggleValue = ToggleValues.celsius;
+      this.$emit('switch', this.toggleValue)
     },
     switchToFahrenheit() {
-      console.log('switchToFahrenheit')
+      this.toggleValue = ToggleValues.fahrenheit
+      this.$emit('switch', this.toggleValue)
     }
   }
 }

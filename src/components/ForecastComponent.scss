@@ -4,11 +4,14 @@
     line-height: 1.5;
   }
 
-  &.flex {
-    display: flex;
-
-    .wrapper:first-child {
-      margin-right: 15px;
-    }
+  .wrapper:first-child {
+    margin-right: 15px;
   }
+  .divider {
+    margin: 0 10px;
+  }
+}
+
+.flex {
+  display: flex;
 }

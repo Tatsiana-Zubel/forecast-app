@@ -2,7 +2,12 @@
   <LoadingSpinner v-if="loading"/>
   <div v-else>
     <div class="container">
-      <span v-if="temperature && weatherDescription"> {{ temperature }}&#8451; | {{ weatherDescription }}</span>
+      <div class="flex">
+        <span v-if="!displayFahrenheit && temperature"> {{ temperature }}&#8451;</span>
+        <span v-else-if="displayFahrenheit && temperature">{{ temperatureInFahrenheit }}&#8457;</span>
+        <span class="divider"> | </span>
+        <span> {{ weatherDescription }}</span>
+      </div>
       <span v-if="city && country">{{ city }}, {{ country }}</span>
     </div>
     <div class="container flex">
@@ -19,7 +24,7 @@
         <span>{{ sunset }}</span>
       </div>
     </div>
-    <ToggleComponent/>
+    <ToggleComponent @switch="switchValue"/>
   </div>
 </template>
 
@@ -38,6 +43,8 @@ export default {
   data() {
     return {
       temperature: null,
+      temperatureInFahrenheit: null,
+      displayFahrenheit: false,
       weatherDescription: null,
       city: null,
       country: null,
@@ -60,7 +67,6 @@ export default {
     }
   },
   beforeMount() {
-
     this.getCoordinates()
   },
   methods: {
@@ -118,6 +124,14 @@ export default {
 
           this.loading = false
         })
+    },
+    switchValue(param) {
+      if (param === 'fahrenheit') {
+        this.displayFahrenheit = true
+        this.temperatureInFahrenheit = (this.temperature * 9/5) + 32
+      } else {
+        this.displayFahrenheit = false
+      }
     }
   }
 }

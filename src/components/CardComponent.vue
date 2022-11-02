@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <span>{{ title }}</span>
+    <span class="title">{{ title }}</span>
     <ForecastComponent/>
   </div>
 </template>
@@ -9,7 +9,8 @@
 import './CardComponent.scss'
 import ForecastComponent from "@/components/ForecastComponent";
 export default {
-  name: 'CardComponent',
+  // eslint-disable-next-line vue/multi-word-component-names
+  name: 'Card',
   components: {
     ForecastComponent
   },
