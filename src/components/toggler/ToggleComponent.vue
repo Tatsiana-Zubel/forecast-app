@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { ToggleValues } from '../../enums/enums'
+import { ToggleValues } from '../../shared/ToggleValues'
 
 export default {
   name: "ToggleComponent",

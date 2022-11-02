@@ -1,5 +1,7 @@
 # forecast-app
 
+todo description 
+
 ## Project setup
 ```
 npm install

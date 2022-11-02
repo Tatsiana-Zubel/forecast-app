@@ -23,6 +23,5 @@ body {
   background-color: #f5f8fa;
   height: 100vh;
   padding: 25px;
-
 }
 </style>
