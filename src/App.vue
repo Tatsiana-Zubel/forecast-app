@@ -17,6 +17,7 @@ export default {
 body {
   margin: 0;
 }
+
 #app {
   font-family: 'Menlo', sans-serif;
   color: #24292e;

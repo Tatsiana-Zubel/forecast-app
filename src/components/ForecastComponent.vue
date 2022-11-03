@@ -31,7 +31,7 @@
 <script>
 import LoadingSpinner from "@/components/spinner/LoadingSpinner"
 import ToggleComponent from "@/components/toggler/ToggleComponent"
-import {ToggleValues} from '@/shared/ToggleValues'
+import { ToggleValues } from '@/shared/ToggleValues'
 import getLocation from "@/service/LocationService"
 import getWeather from "@/service/WeatherService"
 
@@ -101,11 +101,8 @@ export default {
             this.temperature = Math.round(data.main.temp + kelvinUnit)
             this.weatherDescription = data.weather[0].main
             this.humidity = data.main.humidity
-
-            // toFixed() converts to string
             this.wind = data.wind.speed.toFixed(1)
 
-            //Get and convert sunrise/sunset time
             const sunriseUnixTimestamp = data.sys.sunrise
             const sunriseDate = new Date(sunriseUnixTimestamp * 1000)
             let sunriseHours = sunriseDate.getHours()

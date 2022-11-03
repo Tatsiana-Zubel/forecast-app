@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { ToggleValues } from '../../shared/ToggleValues'
+import { ToggleValues } from '@/shared/ToggleValues'
 
 export default {
   name: "ToggleComponent",
@@ -31,16 +31,18 @@ export default {
 
 <style lang="scss">
 .toggle {
-  display:flex;
+  display: flex;
   justify-content: center;
   margin: 5px 0;
 
   button {
     width: 50%;
   }
-  button:hover{
+
+  button:hover {
     cursor: pointer;
   }
+
   span {
     margin: 0 10px;
   }
