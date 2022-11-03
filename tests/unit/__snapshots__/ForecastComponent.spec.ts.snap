@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ForecastComponent.vue should match snapshot 1`] = `
+<div>
+  <div
+    class="container"
+  >
+    <div
+      class="flex"
+    >
+      <span>
+        N/D℃
+      </span>
+      <span
+        class="divider"
+      >
+         | 
+      </span>
+      <span>
+        N/D
+      </span>
+    </div>
+    <span>
+      N/D, N/D
+    </span>
+  </div>
+  <div
+    class="container flex"
+  >
+    <div
+      class="wrapper"
+    >
+      <span>
+        Humidity
+      </span>
+      <span>
+        Wind
+      </span>
+      <span>
+        Sunrise
+      </span>
+      <span>
+        Sunset
+      </span>
+    </div>
+    <div
+      class="wrapper"
+    >
+      <span>
+        N/D%
+      </span>
+      <span>
+        N/D m/s
+      </span>
+      <span>
+        N/D
+      </span>
+      <span>
+        N/D
+      </span>
+    </div>
+  </div>
+  <toggle-component-stub />
+</div>
+`;

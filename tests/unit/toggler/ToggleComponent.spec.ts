@@ -1,12 +1,12 @@
-import { shallowMount } from '@vue/test-utils'
+import { shallowMount, VueWrapper } from '@vue/test-utils'
 import ToggleComponent from '@/components/toggler/ToggleComponent.vue'
 
 describe('ToggleComponent.vue', () => {
-  const wrapper = shallowMount(ToggleComponent)
+  let wrapper: VueWrapper<any>
 
-  // beforeEach(() => {
-  //   wrapper.destroy();
-  // });
+  beforeEach(() => {
+    wrapper = shallowMount(ToggleComponent)
+  })
 
   afterEach(() => {
     jest.clearAllMocks()

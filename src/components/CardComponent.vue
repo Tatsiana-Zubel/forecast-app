@@ -1,18 +1,13 @@
 <template>
   <div class="card">
     <span class="title">{{ title }}</span>
-    <ForecastComponent/>
+    <slot></slot>
   </div>
 </template>
 
 <script>
-import ForecastComponent from "@/components/ForecastComponent"
-
 export default {
   name: 'CardComponent',
-  components: {
-    ForecastComponent
-  },
   props: {
     title: String
   }

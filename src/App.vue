@@ -1,13 +1,17 @@
 <template>
-  <CardComponent title="Current weather"/>
+  <CardComponent title="Current weather">
+    <ForecastComponent/>
+  </CardComponent>
 </template>
 
 <script>
 import CardComponent from './components/CardComponent.vue'
+import ForecastComponent from "@/components/ForecastComponent";
 
 export default {
   name: 'App',
   components: {
+    ForecastComponent,
     CardComponent
   }
 }
